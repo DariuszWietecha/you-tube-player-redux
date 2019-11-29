@@ -1,28 +1,18 @@
 import { connect } from 'react-redux'
+import { more, selectVideoSetUrl } from '../actions'
 import VideoList from '../components/VideoList'
 
-// const getVisibleTodos = (todos, filter) => {
-//   switch (filter) {
-//     case VisibilityFilters.SHOW_ALL:
-//       return todos
-//     case VisibilityFilters.SHOW_COMPLETED:
-//       return todos.filter(t => t.completed)
-//     case VisibilityFilters.SHOW_ACTIVE:
-//       return todos.filter(t => !t.completed)
-//     default:
-//       throw new Error('Unknown filter: ' + filter)
-//   }
-// }
-
 const mapStateToProps = state => ({
-  videos: state.searchResults
+  videos: state.searchResults.items,
+  selectedVideo: state.selectedVideo.video
 })
 
-// const mapDispatchToProps = dispatch => ({
-//   toggleTodo: id => dispatch(toggleTodo(id))
-// })
+const mapDispatchToProps = dispatch => ({
+  more: () => dispatch(more()),
+  selectVideoSetUrl: (video, index) => dispatch(selectVideoSetUrl(video, index))
+})
 
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps
+  mapDispatchToProps
 )(VideoList)
