@@ -1,12 +1,13 @@
 
+import * as he from "he";
 import * as actionsTypes from "../actions/types";
 import * as commonTypes from "../commonTypes";
 
 type SearchResultsActionTypes = actionsTypes.IRequestQueryAction |
-actionsTypes.IReceiveQueryAction |
-actionsTypes.IResetSearchResultsAction;
+  actionsTypes.IReceiveQueryAction |
+  actionsTypes.IResetSearchResultsAction;
 
-const searchResults = (state = { isFetching: false, items: [] as commonTypes.ISearchResource[]},
+const searchResults = (state = { isFetching: false, items: [] as commonTypes.ISearchResource[] },
                        action: SearchResultsActionTypes): commonTypes.ISearchResultsState => {
   switch (action.type) {
     case actionsTypes.REQUEST_QUERY:
@@ -15,6 +16,10 @@ const searchResults = (state = { isFetching: false, items: [] as commonTypes.ISe
         ...{ isFetching: true },
       };
     case actionsTypes.RECEIVE_QUERY:
+      const videos = action.videos.map((item) => {
+        item.snippet.title = he.decode(item.snippet.title);
+        return item;
+      }, [] as commonTypes.ISearchResource[]);
       return {
         ...state,
         ...{

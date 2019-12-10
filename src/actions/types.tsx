@@ -6,6 +6,7 @@ export interface IFetchParams {
 }
 
 export const QUERY_CHANGE = "QUERY_CHANGE";
+export const CLEAR_QUERY = "CLEAR_QUERY";
 export const REQUEST_QUERY = "REQUEST_QUERY";
 export const RECEIVE_QUERY = "RECEIVE_QUERY";
 export const SELECT_VIDEO = "SELECT_VIDEO";
@@ -15,6 +16,10 @@ export const RESET_SEARCH_RESULTS = "RESET_SEARCH_RESULTS";
 export interface IQueryChangeAction extends Action {
   type: typeof QUERY_CHANGE;
   query: string;
+}
+
+export interface IClearQueryAction extends Action {
+  type: typeof CLEAR_QUERY;
 }
 
 export interface IRequestQueryAction extends Action {

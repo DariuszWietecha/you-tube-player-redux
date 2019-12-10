@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "reactstrap";
-// import * as actionsTypes from "../actions/types";
 import * as commonTypes from "../commonTypes";
 
 interface INavigationProps {

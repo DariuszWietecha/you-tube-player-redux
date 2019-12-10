@@ -11,6 +11,12 @@ export const queryChange = (query: string): types.IQueryChangeAction => {
   };
 };
 
+export const clearQuery = (): types.IClearQueryAction => {
+  return {
+    type: "CLEAR_QUERY",
+  };
+};
+
 export const requestQuery = (query: string): types.IRequestQueryAction => ({
   query,
   type: "REQUEST_QUERY",
@@ -26,6 +32,9 @@ export const fetchQuery = (query: string,
                            nextPageToken?: string,
  ): commonTypes.DispatchAction =>
   async (dispatch, getState) => {
+    if (typeof nextPageToken === "undefined") {
+      dispatch(resetSearchResults());
+    }
     dispatch(requestQuery(query));
     // TODO: check if has issues like axios
     const url = new URL("https://www.googleapis.com/youtube/v3/search");
@@ -56,7 +65,8 @@ export const fetchQuery = (query: string,
   };
 
 export const selectVideoSetUrl = (video: commonTypes.ISearchResource,
-                                  index: number): commonTypes.DispatchAction =>
+                                  index: number,
+                                  node?: any): commonTypes.DispatchAction =>
   async (dispatch, getState) => {
     dispatch(selectVideo(video, index));
     const stateAfterSelectVideo = getState();
@@ -77,7 +87,7 @@ export const selectPrevVideoSetUrl = (searchResults: commonTypes.ISearchResource
       .map((i) => {
         let newVideoIndex = i;
         newVideoIndex--;
-        dispatch(selectVideoSetUrl(searchResults[newVideoIndex], newVideoIndex));
+        return dispatch(selectVideoSetUrl(searchResults[newVideoIndex], newVideoIndex));
       })
       .getOrElseL(() => { throw new Error("Index is not defined"); });
   };
@@ -85,7 +95,7 @@ export const selectPrevVideoSetUrl = (searchResults: commonTypes.ISearchResource
 export const  selectNextVideoSetUrl = (searchResults: commonTypes.ISearchResource[],
                                        index?: number): commonTypes.DispatchAction =>
   async (dispatch, getState) => {
-    fromNullable(index)
+    return fromNullable(index)
       .map((i) => {
     let newVideoIndex = i;
     newVideoIndex++;
@@ -125,8 +135,9 @@ export const unselectVideo = (query: string): types.IUnselectVideoAction => ({
   type: "UNSELECT_VIDEO",
 });
 
-export const resetSearchResultsSetUrl = (): commonTypes.DispatchAction =>
+export const resetSetUrl = (): commonTypes.DispatchAction =>
   async (dispatch, getState) => {
+    dispatch(clearQuery());
     dispatch(resetSearchResults());
     const stateAfterResetSearchResults = getState();
     dispatch(push(stateAfterResetSearchResults.url));

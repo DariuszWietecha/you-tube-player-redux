@@ -6,12 +6,13 @@ interface IVideoItemProps {
   horizontal: boolean;
   onClick: () => commonTypes.DispatchAction;
   snippet: commonTypes.ISnippet;
+  refs: React.RefObject<HTMLDivElement>;
 }
 
 const VideoItem = (props: IVideoItemProps) => {
   if (props.horizontal) {
     return (
-      <div className="card mb-3">
+      <div className="card mb-3" ref={props.refs}>
         <Card onClick={props.onClick}>
           <div className="row no-gutters">
             <div className="col-md-4">
@@ -31,7 +32,7 @@ const VideoItem = (props: IVideoItemProps) => {
     );
   } else {
     return (
-      <div className="col-sm-4">
+      <div className="col-sm-4" ref={props.refs}>
         <div className="m-4">
           <Card onClick={props.onClick}>
             <CardImg alt={props.snippet.description}

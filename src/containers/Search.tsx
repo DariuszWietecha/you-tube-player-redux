@@ -1,9 +1,8 @@
-import { fromNullable } from "fp-ts/lib/Option";
 import * as localforage from "localforage";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button, Form, FormGroup, Input } from "reactstrap";
-import { fetchQuery, queryChange, resetSearchResultsSetUrl } from "../actions";
+import { fetchQuery, queryChange, resetSetUrl } from "../actions";
 import * as actionsTypes from "../actions/types";
 import * as commonTypes from "../commonTypes";
 import SearchDataList from "../components/SearchDataList";
@@ -24,21 +23,16 @@ class Search extends Component<ISearchProps, {}> {
   public componentDidMount() {
     return localforage.getItem("searchOptions")
       .then((searchOptions) => {
-        return this.setState({searchOptions});
+        return this.setState({searchOptions: searchOptions || []});
       });
-}
-// const Search = (props: ISearchProps) => {
-    // const [searchOptions, setSearchOptions] = useState();
-  // const [searchOptions, setSearchOptions] = useState(async () => updateSearchOptions);
+  }
 
-  public handleSubmit = async (event: React.FormEvent<HTMLInputElement>) => {
+  public handleSubmit = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();
-    // updateSearchOptions(this.state.searchOptions, this.props.query)
-    //   .then((updatedSearchOptions) => {
-    //     this.setState({searchOptions: updatedSearchOptions});
-    //     console.log("updated searchOptions: ",this.state.searchOptions)
-    //     this.forceUpdate();
-    //   });
+    this.updateSearchOptionsFetchQuery();
+  }
+
+  public updateSearchOptionsFetchQuery = () => {
     if (!this.state.searchOptions.includes(this.props.query)) {
       const updatedSearchOptions = [...this.state.searchOptions, ...[this.props.query]];
       localforage.setItem("searchOptions", updatedSearchOptions);
@@ -47,6 +41,13 @@ class Search extends Component<ISearchProps, {}> {
 
     this.props.fetchQuery(this.props.query);
   }
+
+  public handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter") {
+      this.updateSearchOptionsFetchQuery();
+    }
+  }
+
   public handleQueryChange = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();
     this.props.queryChange(event.currentTarget.value);
@@ -73,11 +74,12 @@ public render() {
               type="search"
               name="query"
               onChange={this.handleQueryChange}
+              onKeyDown={this.handleKeyDown}
               value={this.props.query}
               placeholder="Search in YouTube"
               aria-describedby="button-addon4"
               list="searchHistory"
-              autoComplete="off" />
+              autoComplete="off"/>
             <SearchDataList list={this.state.searchOptions} />
             {/* <input ref={node => input = node} className="form-control" aria-describedby="button-addon4" /> */}
             <div className="input-group-append" id="button-addon4">
@@ -101,7 +103,7 @@ const mapStateToProps = (state: commonTypes.IApplicationState) => ({
 const mapDispatchToProps = (dispatch: any) => ({
   fetchQuery: (query: string) => dispatch(fetchQuery(query)),
   queryChange: (query: string) => dispatch(queryChange(query)),
-  resetSearchResultsSetUrl: () => dispatch(resetSearchResultsSetUrl()),
+  resetSearchResultsSetUrl: () => dispatch(resetSetUrl()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

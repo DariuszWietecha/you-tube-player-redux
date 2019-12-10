@@ -58,9 +58,6 @@ export interface IVideoResource extends IResource {
   // other attribs was skipped as not critical
 }
 
-// export interface IVideosListSearchResponse extends ISearchResponse {
-//   items: IVideoResource[];
-// }
 export interface IApplicationState {
   query: string;
   router: RouterState<any>;
@@ -68,13 +65,6 @@ export interface IApplicationState {
   selectedVideo: ISelectVideoState;
   url: string;
 }
-
-// export type AppThunk<ReturnType = void> = ThunkAction<
-// ReturnType,
-// IApplicationState,
-// null,
-// Action<string>
-// >;
 
 export interface ISearchResultsState {
   isFetching: boolean;
