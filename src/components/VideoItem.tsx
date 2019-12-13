@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle } from "reactstrap";
 import * as commonTypes from "../commonTypes";
+import {DivWithPointer} from "../components/SimpleStyledComponents";
 
 interface IVideoItemProps {
   horizontal: boolean;
@@ -12,7 +13,7 @@ interface IVideoItemProps {
 const VideoItem = (props: IVideoItemProps) => {
   if (props.horizontal) {
     return (
-      <div className="card mb-3" ref={props.refs}>
+      <DivWithPointer className="card mb-3" ref={props.refs}>
         <Card onClick={props.onClick}>
           <div className="row no-gutters">
             <div className="col-md-4">
@@ -28,11 +29,11 @@ const VideoItem = (props: IVideoItemProps) => {
             </div>
           </div>
         </Card>
-      </div>
+      </DivWithPointer>
     );
   } else {
     return (
-      <div className="col-sm-4" ref={props.refs}>
+      <DivWithPointer className="col-sm-4 " ref={props.refs}>
         <div className="m-4">
           <Card onClick={props.onClick}>
             <CardImg alt={props.snippet.description}
@@ -46,7 +47,7 @@ const VideoItem = (props: IVideoItemProps) => {
             </CardBody>
           </Card>
         </div>
-      </div>
+      </DivWithPointer>
     );
   }
 };

@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
 import { Container, Jumbotron } from "reactstrap";
-import styled from "styled-components";
 import { fetchQuery, queryChange, resetSetUrl } from "../actions";
 import * as actionsTypes from "../actions/types";
 import * as commonTypes from "../commonTypes";
+import {DivWithPointer, Overlay} from "../components/SimpleStyledComponents";
 import Search from "./Search";
 import VisibleNavigation from "./VisibleNavigation";
 import Video from "./VisibleVideo";
@@ -15,9 +15,6 @@ import VisibleVideoList from "./VisibleVideoList";
 interface IMatchParams {
   query: string;
 }
-interface IOverlayParams {
-  isFetching: boolean;
-}
 
 interface IAppProps extends RouteComponentProps<IMatchParams> {
   isFetching: boolean;
@@ -25,23 +22,6 @@ interface IAppProps extends RouteComponentProps<IMatchParams> {
   queryChange: (query: string) => actionsTypes.IQueryChangeAction;
   resetSetUrl: () => actionsTypes.IQueryChangeAction;
 }
-
-const Overlay = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  visibility: ${(props: IOverlayParams) => props.isFetching ? "visible" : "hidden"};
-  z-index: 1;
-
-  .spinner-border {
-    position: absolute;
-    top: 50%;
-  }
-`;
-const Logo = styled.div`
-  cursor: pointer
-`;
 
 class App extends Component<IAppProps, {}> {
   public componentDidMount() {
@@ -65,9 +45,9 @@ class App extends Component<IAppProps, {}> {
         </Overlay>
         <Container className="pt-4">
           <Jumbotron>
-            <Logo className="display-4 mb-4 text-center" onClick={() => this.props.resetSetUrl()} role="button">
-              You Tube Player rcmodelreviews
-            </Logo>
+            <DivWithPointer className="display-4 mb-4 text-center" onClick={this.props.resetSetUrl} role="button">
+              You Tube Player
+            </DivWithPointer>
             <VisibleNavigation></VisibleNavigation>
             <Search></Search>
             <Video></Video>
