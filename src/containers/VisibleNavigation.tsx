@@ -5,10 +5,9 @@ import Navigation from "../components/Navigation";
 
 const mapStateToProps = (state: commonTypes.IApplicationState) => ({
   query: state.query,
-  searchResults: state.searchResults.items,
-  selectedVideo: state.selectedVideo,
+  searchResults: state.searchResults,
 });
-// todo: any below
+
 const mapDispatchToProps = (dispatch: any) => ({
   selectNextVideoSetUrl: (searchResults: commonTypes.ISearchResource[], index?: number) =>
     dispatch(selectNextVideoSetUrl(searchResults, index)),

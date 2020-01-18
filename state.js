@@ -9,15 +9,21 @@ const state = {
         }
       }
     ],
-    nextPageToken: '345gsfg'
-  },
-  selectedVideo: {
+    nextPageToken: '345gsfg',
     video: {
       snippet: {
         title: 'asdfadsf'
       }
     },
     index: 1
-  },  
+  },
+  // selectedVideo: {
+  //   video: {
+  //     snippet: {
+  //       title: 'asdfadsf'
+  //     }
+  //   },
+  //   index: 1
+  // },  
   url: '/rcmodelReviews'
 }

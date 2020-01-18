@@ -7,9 +7,10 @@ import VideoItem from "./VideoItem";
 interface IVideoListProps {
   more: () => commonTypes.DispatchAction;
   videos: commonTypes.ISearchResource[];
-  selectedVideo: commonTypes.ISelectVideoState;
+  searchResults: commonTypes.ISearchResultsState;
   selectVideoSetUrl: (video: commonTypes.ISearchResource, index: number) => commonTypes.DispatchAction;
 }
+
 class VideoList extends Component<IVideoListProps, {}> {
   public state = {
     horizontal: true,
@@ -18,7 +19,7 @@ class VideoList extends Component<IVideoListProps, {}> {
   public refss: Array<React.RefObject<HTMLDivElement>> = [];
 
   public componentDidUpdate() {
-    return fromNullable(this.props.selectedVideo.index)
+    return fromNullable(this.props.searchResults.index)
       .mapNullable((i) => this.refss[i])
       .mapNullable((r) => r.current)
       .map((c) => {
@@ -26,6 +27,8 @@ class VideoList extends Component<IVideoListProps, {}> {
           behavior: "smooth",
           block: "start",
         });
+
+        return null;
       });
   }
 
@@ -41,7 +44,7 @@ class VideoList extends Component<IVideoListProps, {}> {
       return acc;
     }, [] as Array<React.RefObject<HTMLDivElement>>);
 
-    if (!this.props.selectedVideo.video) {
+    if (!this.props.searchResults.video) {
       return (
         <div>
           <div className="row justify-content-end text-right">

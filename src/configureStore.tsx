@@ -3,22 +3,23 @@ import { createBrowserHistory } from "history";
 import { applyMiddleware, compose, createStore } from "redux";
 import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
+import * as commonTypes from "./commonTypes";
 import { rootReducer } from "./reducers";
 
 export const history = createBrowserHistory();
 const loggerMiddleware = createLogger();
 
 export default function configureStore(
-  // preloadedState?: RootState
+  preloadedState?: commonTypes.IApplicationState,
   ) {
   const store = createStore(
-    rootReducer(history), // root reducer with router state
-    // preloadedState,
+    rootReducer(history),
+    preloadedState,
     compose(
       applyMiddleware(
-        routerMiddleware(history), // for dispatching history actions
+        routerMiddleware(history),
         thunkMiddleware,
-        loggerMiddleware, // ... other middlewares ...
+        loggerMiddleware,
       ),
     ),
   );

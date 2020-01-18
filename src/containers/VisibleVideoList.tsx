@@ -4,7 +4,7 @@ import * as commonTypes from "../commonTypes";
 import VideoList from "../components/VideoList";
 
 const mapStateToProps = (state: commonTypes.IApplicationState) => ({
-  selectedVideo: state.selectedVideo,
+  searchResults: state.searchResults,
   videos: state.searchResults.items,
 });
 

@@ -12,7 +12,7 @@ import VisibleNavigation from "./VisibleNavigation";
 import Video from "./VisibleVideo";
 import VisibleVideoList from "./VisibleVideoList";
 
-interface IMatchParams {
+export interface IMatchParams {
   query: string;
 }
 

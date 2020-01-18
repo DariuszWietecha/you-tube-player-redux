@@ -1,14 +1,18 @@
 
+import { LOCATION_CHANGE, LocationChangeAction } from "connected-react-router";
 import * as he from "he";
 import * as actionsTypes from "../actions/types";
 import * as commonTypes from "../commonTypes";
 
 type SearchResultsActionTypes = actionsTypes.IRequestQueryAction |
   actionsTypes.IReceiveQueryAction |
-  actionsTypes.IResetSearchResultsAction;
+  actionsTypes.IResetSearchResultsAction | actionsTypes.ISelectVideoAction |
+  actionsTypes.IUnselectVideoAction | actionsTypes.IResetSearchResultsAction |
+  LocationChangeAction;
 
-const searchResults = (state = { isFetching: false, items: [] as commonTypes.ISearchResource[] },
-                       action: SearchResultsActionTypes): commonTypes.ISearchResultsState => {
+const searchResults = (
+  state = { isFetching: false, items: [] as commonTypes.ISearchResource[] },
+  action: SearchResultsActionTypes): commonTypes.ISearchResultsState => {
   switch (action.type) {
     case actionsTypes.REQUEST_QUERY:
       return {
@@ -24,7 +28,7 @@ const searchResults = (state = { isFetching: false, items: [] as commonTypes.ISe
         ...state,
         ...{
           isFetching: false,
-          items: [...state.items, ...action.videos],
+          items: [...state.items, ...videos],
           nextPageToken: action.nextPageToken,
         },
       };
@@ -32,10 +36,59 @@ const searchResults = (state = { isFetching: false, items: [] as commonTypes.ISe
       return {
         ...state,
         ...{
+          index: undefined,
           items: [],
           nextPageToken: "",
+          video: undefined,
         },
       };
+    case actionsTypes.SELECT_VIDEO:
+      return {
+        ...state,
+        ...{
+          index: action.index,
+          video: action.selectedVideo,
+        },
+      };
+    case actionsTypes.UNSELECT_VIDEO:
+      return {
+        ...state,
+        ...{ video: undefined },
+      };
+    // case actionsTypes.RESET_SEARCH_RESULTS:
+    //   return {
+    //     ...state,
+    //     ...{
+    //       index: undefined,
+    //       video: undefined,
+    //     },
+    //   };
+    case LOCATION_CHANGE:
+      const videoId = action.payload.location.pathname.replace("/", "");
+      let index;
+      const video = state.items.find((item, itemIndex) => {
+        if (item.id.videoId === videoId) {
+          index = itemIndex;
+          return true;
+        }
+        return false;
+      });
+      if (video) {
+        return {
+          ...state,
+          ...{
+            index,
+            video,
+          },
+        };
+      } else {
+        return {
+          ...state,
+          ...{
+            video: undefined,
+          },
+        };
+      }
     default:
       return state;
   }

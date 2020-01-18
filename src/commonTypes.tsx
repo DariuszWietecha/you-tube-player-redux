@@ -1,13 +1,14 @@
 
 import { RouterState } from "connected-react-router";
 import { Action } from "redux";
-import { ThunkAction, ThunkDispatch } from "redux-thunk";
+import { ThunkAction } from "redux-thunk";
 
-export interface IPropsWithHandleVideoSelect {
-  handleVideoSelect: (
-    video: ISearchResource,
-    videoIndex: number) => void;
-}
+export type DispatchAction<T = void> = ThunkAction<
+  Promise<T>,
+  IApplicationState,
+  void,
+  Action
+>;
 
 export interface IResource {
   kind: string;
@@ -53,16 +54,11 @@ export interface ISnippet {
   channelTitle: string;
 }
 
-export interface IVideoResource extends IResource {
-  id: string;
-  // other attribs was skipped as not critical
-}
-
+// State
 export interface IApplicationState {
   query: string;
-  router: RouterState<any>;
+  router: RouterState;
   searchResults: ISearchResultsState;
-  selectedVideo: ISelectVideoState;
   url: string;
 }
 
@@ -70,24 +66,8 @@ export interface ISearchResultsState {
   isFetching: boolean;
   items: ISearchResource[];
   nextPageToken?: string;
-}
-
-export interface ISelectVideoState {
   video?: ISearchResource;
   index?: number;
-}
-
-export type Dispatch = ThunkDispatch<IApplicationState, void, Action>;
-
-export type DispatchAction<T = void> = ThunkAction<
-  Promise<T>,
-  IApplicationState,
-  void,
-  Action
->;
-
-export function isResource(obj: any): obj is ISearchResource | IVideoResource {
-  return typeof obj.id !== "undefined";
 }
 
 export function isSearchResource(obj: any): obj is ISearchResource {
