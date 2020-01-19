@@ -55,14 +55,6 @@ const searchResults = (
         ...state,
         ...{ video: undefined },
       };
-    // case actionsTypes.RESET_SEARCH_RESULTS:
-    //   return {
-    //     ...state,
-    //     ...{
-    //       index: undefined,
-    //       video: undefined,
-    //     },
-    //   };
     case LOCATION_CHANGE:
       const videoId = action.payload.location.pathname.replace("/", "");
       let index;

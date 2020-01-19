@@ -6,6 +6,7 @@ interface IVideoProps {
 }
 
 const Video = (props: IVideoProps) => {
+  window.scrollTo(0, 0);
   if (typeof props.video !== "undefined") {
     const url = `https://www.youtube.com/embed/${props.video.id.videoId}`;
 

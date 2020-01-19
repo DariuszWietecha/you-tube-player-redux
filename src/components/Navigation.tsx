@@ -13,7 +13,7 @@ interface INavigationProps {
 const Navigation = (props: INavigationProps) => {
   const disabledPrev = props.searchResults.index === 0;
 
-  if (typeof props.searchResults.index !== "undefined") {
+  if (typeof props.searchResults.video !== "undefined") {
     return (
       <div className="row justify-content-end">
         <div className="col mb-3 text-right">
