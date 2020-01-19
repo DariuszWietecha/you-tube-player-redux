@@ -1,9 +1,14 @@
 # Instructions
-### Introduction
-To implement the app I used:
+### Used solutions
 - [Create React App](https://create-react-app.dev/)
+- [Redux](https://github.com/reduxjs/redux)
+- [TypeScript](https://www.typescriptlang.org/)
+- [cross-fetch](https://github.com/lquixada/cross-fetch)
+- [localForage](https://github.com/localForage/localForage)
 - [Bootstrap](https://getbootstrap.com/)
 - [reactstrap](https://reactstrap.github.io/)
+- [styled-components](https://www.styled-components.com/)
+- [Connected React Router](https://github.com/kswin/connected-react-router/)
 
 
 ### Runing the app
