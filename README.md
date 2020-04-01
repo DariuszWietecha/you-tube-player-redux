@@ -1,5 +1,14 @@
 # Instructions
-### Used solutions
+
+## Introduction
+Simple WebApp which let to search and watch You Tube videos.
+
+The app was deployed on [https://you-tube-player-redux-100.herokuapp.com/](https://you-tube-player-redux-100.herokuapp.com/)
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Implementation details
+Main used dependencies
 - [Create React App](https://create-react-app.dev/)
 - [Redux](https://github.com/reduxjs/redux)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -10,9 +19,25 @@
 - [styled-components](https://www.styled-components.com/)
 - [Connected React Router](https://github.com/kswin/connected-react-router/)
 
+During the implemented was used node v10.16.3.
 
-### Runing the app
-1. Install dependencies and build using `npm install`.
-2. Create .env file with variable REACT_APP_YT_KEY=<your You Tube API Key>, e.g. "REACT_APP_YT_KEY=aaaaaaaaaaaaaa-bbbbbbbbbbbbbbbbbbbbbbbb"
-3. Run app using `npm start`.
-4. App will be compiled and opened in default browser on [http://localhost:3000](http://localhost:3000).
+## Runing the app
+### Runing as NodeJS service
+1. Install dependencies and build the app for production to the build folder using `npm install`.
+2. Copy `example.env` as `.env` and update `REACT_APP_YT_KEY` variable value with your You Tube API Key, e.g.
+```
+REACT_APP_YT_KEY=yourYouTubeAPIKey
+```
+4. Run app using `npm start`.
+5. App will be available on [http://localhost:8080](http://localhost:8080)(If port wasn't changed by `.env`).
+
+### Runing the app in the development mode
+1. Install dependencies and build the app for production to the build folder using `npm install`.
+2. Copy `example.env` as `.env` and update `REACT_APP_YT_KEY` variable value with your You Tube API Key, e.g.
+```
+REACT_APP_YT_KEY=yourYouTubeAPIKey
+```
+4. Run app using `npm run serve`.
+5. App will be compiled and opened in default browser on http://localhost:3000.
+The page will reload if you make edits.
+You will also see any lint errors in the console.

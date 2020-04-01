@@ -32,6 +32,11 @@ class Search extends Component<ISearchProps, {}> {
     this.updateSearchOptionsFetchQuery();
   }
 
+  public submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    this.updateSearchOptionsFetchQuery();
+  }
+
   public updateSearchOptionsFetchQuery = () => {
     if (!this.state.searchOptions.includes(this.props.query)) {
       const updatedSearchOptions = [...this.state.searchOptions, ...[this.props.query]];
@@ -42,12 +47,6 @@ class Search extends Component<ISearchProps, {}> {
     this.props.fetchQuery(this.props.query);
   }
 
-  public handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === "Enter") {
-      this.updateSearchOptionsFetchQuery();
-    }
-  }
-
   public handleQueryChange = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();
     this.props.queryChange(event.currentTarget.value);
@@ -56,7 +55,9 @@ class Search extends Component<ISearchProps, {}> {
   public render() {
     if (!this.props.searchResults.video) {
       return (
-        <Form>
+        <Form
+        onSubmit={this.submitHandler}
+        >
           <FormGroup>
             <div className="input-group">
               <Input
@@ -64,7 +65,6 @@ class Search extends Component<ISearchProps, {}> {
                 type="search"
                 name="query"
                 onChange={this.handleQueryChange}
-                onKeyDown={this.handleKeyDown}
                 value={this.props.query}
                 placeholder="Search in YouTube"
                 aria-describedby="button-addon4"

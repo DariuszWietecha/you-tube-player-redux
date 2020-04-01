@@ -1,7 +1,22 @@
 {
   "name": "you-tube-player-redux",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Simple WebApp which let to search and watch You Tube videos.",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DariuszWietecha/you-tube-player-redux.git"
+  },
+  "author": "Dariusz Wietecha",
+  "license": "ISC",
+  "scripts": {
+    "eject": "react-scripts eject",
+    "build": "react-scripts build",
+    "serve": "react-scripts start",
+    "postinstall": "react-scripts build",
+    "start": "node server.js",
+    "test": "react-scripts test --env=node"
+  },
   "devDependencies": {
     "@types/he": "^1.1.0",
     "@types/history": "^4.7.3",
@@ -22,6 +37,7 @@
     "connected-react-router": "^6.6.1",
     "cross-fetch": "^3.0.4",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "fp-ts": "1.19.5",
     "he": "^1.2.0",
     "localforage": "^1.7.3",
@@ -35,12 +51,6 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.4.1",
     "typescript": "^3.7.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "test": "react-scripts test --env=node"
   },
   "browserslist": [
     ">0.2%",
