@@ -41,3 +41,15 @@ REACT_APP_YT_KEY=yourYouTubeAPIKey
 5. App will be compiled and opened in default browser on http://localhost:3000.
 The page will reload if you make edits.
 You will also see any lint errors in the console.
+
+## Unit tests
+#### Unit tests include:
+<!-- 1.  Exemplary standard tests checking content or formatting of elements(src\app\components\app\app.component.spec.ts)
+2. Checking instantiating components (all components)
+3. Jest Snapshots (all components)
+100% unit tests coverage wasn't the target of this project. -->
+
+#### Runing unit tests:
+1. Install dependencies and build using `npm install`.
+2. Run unit tests by `npm test`.
+3. To check test coverage run `npm test -- --coverage --watchAll`.

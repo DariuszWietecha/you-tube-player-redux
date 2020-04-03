@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component normal view, video item is the first from the list 1`] = `
+<div
+  className="row justify-content-end"
+>
+  <div
+    className="col mb-3 text-right"
+  >
+    <span
+      className=""
+    >
+      <button
+        aria-label={null}
+        className="mr-2 btn btn-outline-info disabled"
+        disabled={true}
+        id="prev"
+        onClick={[Function]}
+        type="button"
+      >
+        Prev
+      </button>
+      <button
+        aria-label={null}
+        className="mr-4 btn btn-outline-info"
+        id="next"
+        onClick={[Function]}
+        type="button"
+      >
+        Next
+      </button>
+    </span>
+    <button
+      aria-label={null}
+      className="btn btn-outline-secondary"
+      id="back"
+      onClick={[Function]}
+      type="button"
+    >
+      Back
+    </button>
+  </div>
+</div>
+`;
+
+exports[`App Component normal view, video item is the second from the list 1`] = `
+<div
+  className="row justify-content-end"
+>
+  <div
+    className="col mb-3 text-right"
+  >
+    <span
+      className=""
+    >
+      <button
+        aria-label={null}
+        className="mr-2 btn btn-outline-info"
+        disabled={false}
+        id="prev"
+        onClick={[Function]}
+        type="button"
+      >
+        Prev
+      </button>
+      <button
+        aria-label={null}
+        className="mr-4 btn btn-outline-info"
+        id="next"
+        onClick={[Function]}
+        type="button"
+      >
+        Next
+      </button>
+    </span>
+    <button
+      aria-label={null}
+      className="btn btn-outline-secondary"
+      id="back"
+      onClick={[Function]}
+      type="button"
+    >
+      Back
+    </button>
+  </div>
+</div>
+`;
+
+exports[`App Component video item not set -> render null 1`] = `null`;
