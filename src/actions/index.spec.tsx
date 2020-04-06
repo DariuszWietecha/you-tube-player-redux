@@ -4,7 +4,7 @@ import thunk from "redux-thunk";
 import * as actions from "./index";
 import * as types from "./types";
 
-describe.only("Actions", () => {
+describe("Actions", () => {
   describe("sync actions", () => {
     it("should create queryChange action", () => {
       const query = "query";
