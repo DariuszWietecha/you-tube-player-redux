@@ -44,10 +44,10 @@ You will also see any lint errors in the console.
 
 ## Unit tests
 #### Unit tests include:
-<!-- 1.  Exemplary standard tests checking content or formatting of elements(src\app\components\app\app.component.spec.ts)
-2. Checking instantiating components (all components)
-3. Jest Snapshots (all components)
-100% unit tests coverage wasn't the target of this project. -->
+1. Sync and thunk action creators - src/actions/index.spec.tsx
+3. Jest Snapshots - src/components/Navigation.spec.tsx
+4. Check calls of component event handler - src/components/Navigation.spec.tsx
+100% unit tests coverage wasn't the target of this project.
 
 #### Runing unit tests:
 1. Install dependencies and build using `npm install`.

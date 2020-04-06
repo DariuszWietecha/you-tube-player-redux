@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { selectNextVideoSetUrl, selectPrevVideoSetUrl, unselectVideoSetUrl } from "../actions";
 import * as commonTypes from "../commonTypes";
-import Navigation from "../components/Navigation";
+import { Navigation } from "../components/Navigation";
 
 const mapStateToProps = (state: commonTypes.IApplicationState) => ({
   query: state.query,
