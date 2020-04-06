@@ -43,10 +43,12 @@ The page will reload if you make edits.
 You will also see any lint errors in the console.
 
 ## Unit tests
-#### Unit tests include:
+#### Unit tests:
 1. Sync and thunk action creators - src/actions/index.spec.tsx
+2. Reducer - src/reducers/query.spec.tsx
 3. Jest Snapshots - src/components/Navigation.spec.tsx
 4. Check calls of component event handler - src/components/Navigation.spec.tsx
+5. Container with mocked store and RouteComponentProps - src/containers/App.spec.tsx
 
 100% unit tests coverage wasn't the target of this project.
 

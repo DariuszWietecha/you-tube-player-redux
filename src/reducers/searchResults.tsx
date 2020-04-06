@@ -6,8 +6,10 @@ import * as commonTypes from "../commonTypes";
 
 type SearchResultsActionTypes = actionsTypes.IRequestQueryAction |
   actionsTypes.IReceiveQueryAction |
-  actionsTypes.IResetSearchResultsAction | actionsTypes.ISelectVideoAction |
-  actionsTypes.IUnselectVideoAction | actionsTypes.IResetSearchResultsAction |
+  actionsTypes.IResetSearchResultsAction |
+  actionsTypes.ISelectVideoAction |
+  actionsTypes.IUnselectVideoAction |
+  actionsTypes.IResetSearchResultsAction |
   LocationChangeAction;
 
 const searchResults = (

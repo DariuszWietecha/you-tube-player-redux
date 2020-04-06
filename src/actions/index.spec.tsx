@@ -29,7 +29,7 @@ describe.only("Actions", () => {
       nock.cleanAll();
     });
 
-    it.only("creates receiveQuery when fetchQuery has been done", () => {
+    it("creates receiveQuery when fetchQuery has been done", () => {
       ytNock
         .get(/youtube\/v3\/search\?key=.*&maxResults=12&part=snippet&q=query&type=video/)
         .reply(200, result);

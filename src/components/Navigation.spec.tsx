@@ -4,7 +4,7 @@ import renderer from "react-test-renderer";
 import * as commonTypes from "../commonTypes";
 import { Navigation } from "./Navigation";
 
-describe("App Component", () => {
+describe("Navigation component", () => {
   const searchResultsItem: commonTypes.ISearchResource = require("../../test/data/searchResultsItem.json");
 
   const props = {
