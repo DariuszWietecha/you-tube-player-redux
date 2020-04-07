@@ -1,5 +1,3 @@
-# Instructions
-
 ## Introduction
 Simple WebApp which let to search and watch You Tube videos.
 
