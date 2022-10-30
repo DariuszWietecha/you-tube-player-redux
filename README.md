@@ -1,8 +1,6 @@
 ## Introduction
 Simple WebApp which let to search and watch You Tube videos.
 
-The app was deployed on [https://you-tube-player-redux-100.herokuapp.com/](https://you-tube-player-redux-100.herokuapp.com/)
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Implementation details
